@@ -42,7 +42,7 @@ struct ImageOverlay: View {
         
         Button("Get started") {
             self.showLogin.toggle()
-        }.sheet(isPresented: $showLogin){
+        }.fullScreenCover(isPresented: $showLogin){
             Login()
         }.font(Font.custom("Roboto", size: 20).weight(.bold)).contentShape(Rectangle()).frame(width: 325, height: 60)
 .background(Color(red: 0.31, green: 0.76, blue: 0.79)).cornerRadius(10)

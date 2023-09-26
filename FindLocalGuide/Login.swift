@@ -112,9 +112,13 @@ struct Login: View {
                         .background(Color(red: 0.31, green: 0.76, blue: 0.79))
                         .cornerRadius(10)
                         .offset(x: 0, y: 0)
-                    Button("Login", action: {
+                    Button(action: {
                         Task {
                             await viewModel.signIn()
+                        } 
+                    }, label: {
+                        NavigationLink(destination: Homepage()){
+                            Text("Login")
                         }
                     }).font(Font.custom("Roboto", size: 20).weight(.bold))
                         .foregroundColor(Color(red: 0.04, green: 0.08, blue: 0.08))

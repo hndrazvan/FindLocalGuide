@@ -2,17 +2,6 @@ import SwiftUI
 import Combine
 import FirebaseAuth
 
-struct User {
-    let uid: String
-    let email: String
-    let firstName: String
-    let lastName: String
-    let city: String
-    let state: String
-    let country: String
-    let zipCode: String
-}
-
 class ViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
@@ -29,7 +18,7 @@ class ViewModel: ObservableObject {
     @Published var isLoggedIn = false
         
     private var handler = Auth.auth().addStateDidChangeListener{_,_ in }
-        
+    private var userRepository: UserRepository = UserRepository()
     var currentUser: User {
         return _currentUser ?? User(uid: "", email: "", firstName:"",lastName:"", city:"", state:"",country:"", zipCode:"")
     }
@@ -66,6 +55,8 @@ class ViewModel: ObservableObject {
             errorMessage = error.localizedDescription
             print(errorMessage)
         }
+        
+        userRepository.addUser(user: currentUser)
     }
         
     func signOut() async {
@@ -79,6 +70,9 @@ class ViewModel: ObservableObject {
         }
             
     }
+    func returnCurrentUser() -> UserInfo? {
+        return Auth.auth().currentUser
+    }
         
     deinit{
         Auth.auth().removeStateDidChangeListener(handler)
@@ -89,7 +83,23 @@ struct EmailInputView: View {
     @Binding var txt: String
     
     var body: some View {
-        TextField(placeHolder, text: $txt)
+        TextField("", text: $txt, prompt: Text(placeHolder).foregroundColor(.gray))
+            .keyboardType(.emailAddress)
+            .onReceive(Just(txt)) { newValue in
+                let validString = newValue.filter { "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ._-+$!~&=#[]@".contains($0) }
+                if validString != newValue {
+                    self.txt = validString
+                }
+            }.font(Font.custom("Roboto", size: 20)).foregroundColor(.black).offset(x: 27, y: -0.32)
+    }
+}
+
+struct PasswordInputView: View {
+    var placeHolder: String = ""
+    @Binding var txt: String
+    
+    var body: some View {
+        SecureField(placeHolder, text: $txt, prompt: Text(placeHolder).foregroundColor(.gray))
             .keyboardType(.emailAddress)
             .onReceive(Just(txt)) { newValue in
                 let validString = newValue.filter { "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ._-+$!~&=#[]@".contains($0) }
@@ -100,18 +110,4 @@ struct EmailInputView: View {
     }
 }
 
-struct PasswordInputView: View {
-    var placeHolder: String = ""
-    @Binding var txt: String
-    
-    var body: some View {
-        SecureField(placeHolder, text: $txt)
-            .keyboardType(.emailAddress)
-            .onReceive(Just(txt)) { newValue in
-                let validString = newValue.filter { "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ._-+$!~&=#[]@".contains($0) }
-                if validString != newValue {
-                    self.txt = validString
-                }
-        }.font(Font.custom("Roboto", size: 20)).foregroundColor(.black).offset(x: 27, y: -0.32)
-    }
-}
+          
