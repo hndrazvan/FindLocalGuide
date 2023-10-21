@@ -2,8 +2,8 @@ import SwiftUI
 import Combine
 import FirebaseAuth
 
-struct Login: View {
-  @StateObject var viewModel = ViewModel()
+struct LoginPage: View {
+  @StateObject var viewModel = LoginViewModel()
 
   var body: some View {
     @State var shouldNavigate = false
@@ -13,7 +13,7 @@ struct Login: View {
                 Text("Welcome Back: Your Journey Awaits")
                     .font(Font.custom("Roboto", size: 20).weight(.bold))
                     .foregroundColor(.black)
-                    .offset(x: 15, y: -228.50)
+                    .offset(x: 15, y: -238.50)
                 Ellipse()
                     .foregroundColor(Color(red: 0.32, green: 0.35, blue: 0.65))
                     .frame(width: 300, height: 250)
@@ -44,23 +44,6 @@ struct Login: View {
                 }
                 .frame(width: 345.45, height: 27.96)
                 .offset(x: -3.77, y: -400.98)
-                ZStack() {
-                    Rectangle()
-                        .foregroundColor(.clear)
-                        .frame(width: 253, height: 54)
-                        .background(Color(red: 0.31, green: 0.76, blue: 0.79))
-                        .cornerRadius(10)
-                        .offset(x: 0, y: 0)
-                    Button("Login", action: {
-                        Task {
-                            await viewModel.signIn()
-                        }
-                    }).font(Font.custom("Roboto", size: 20).weight(.bold))
-                        .foregroundColor(Color(red: 0.04, green: 0.08, blue: 0.08))
-                        .offset(x: -0.39, y: 0)
-                }
-                .frame(width: 253, height: 54)
-                .offset(x: 1, y: 263)
                 
                 ZStack() {
                     Rectangle()
@@ -73,7 +56,7 @@ struct Login: View {
                         .onChange(of: viewModel.password, perform: onInputChanged)
                 }
                 .frame(width: 350, height: 48)
-                .offset(x: 9.50, y: 139)
+                .offset(x: 9.50, y: 109)
                 ZStack() {
                     Rectangle()
                         .foregroundColor(.clear)
@@ -85,11 +68,11 @@ struct Login: View {
                         .onChange(of: viewModel.email, perform: onInputChanged)
                 }
                 .frame(width: 350, height: 45)
-                .offset(x: 9.50, y: 63.50)
+                .offset(x: 9.50, y: 43.50)
                 Text("Forgot password?")
                     .font(Font.custom("Roboto", size: 20))
                     .foregroundColor(Color(red: 0.06, green: 0.50, blue: 0.91))
-                    .offset(x: 4.50, y: 203.50)
+                    .offset(x: 4.50, y: 163.50)
                 Rectangle()
                     .foregroundColor(.clear)
                     .frame(width: 382, height: 198)
@@ -99,7 +82,7 @@ struct Login: View {
                             .frame(width: 382, height: 198)
                             .clipped()
                     )
-                    .offset(x: 0, y: -105)
+                    .offset(x: 0, y: -115)
                     .shadow(
                         color: Color(red: 0, green: 0, blue: 0, opacity: 0.25), radius: 4, y: 4
                     )
@@ -125,18 +108,26 @@ struct Login: View {
                         .offset(x: -0.39, y: 0)
                 }
                 .frame(width: 253, height: 54)
-                .offset(x: 1, y: 263)
+                .offset(x: 1, y: 223)
                 
                 Text("Don't have an account?")
-                    .font(Font.custom("Roboto", size: 20))
-                    .foregroundColor(.black).offset(x: -25, y: 363)
+                    .font(Font.custom("Roboto", size: 17))
+                    .foregroundColor(.black).offset(x: 5, y: 293)
                 Button {
                     
                 } label: {
-                    NavigationLink(destination: SignUp()){
-                        Text("Sign up")
+                    NavigationLink(destination: SignUpAsTourist()){
+                        Text("Sign up as tourist")
                     }
-                }.offset(x: 125, y: 363)
+                }.offset(x: 5, y: 333)
+                
+                Button {
+                    
+                } label: {
+                    NavigationLink(destination: SignUpAsGuide()){
+                        Text("Sign up as local guide")
+                    }
+                }.offset(x: 5, y: 363)
                 
                 
             }
@@ -156,6 +147,6 @@ struct Login: View {
 
 struct Login_Previews: PreviewProvider {
   static var previews: some View {
-    Login()
+    LoginPage()
   }
 }

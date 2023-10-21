@@ -2,7 +2,7 @@ import SwiftUI
 import Combine
 import FirebaseAuth
 
-class ViewModel: ObservableObject {
+class LoginViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var firstName = ""
@@ -12,21 +12,21 @@ class ViewModel: ObservableObject {
     @Published var state = ""
     @Published var city = ""
 
-    @Published private var _currentUser : User? = nil
+    @Published private var _currentUser : TouristUser? = nil
     @Published var hasError = false
     @Published var errorMessage = ""
     @Published var isLoggedIn = false
         
     private var handler = Auth.auth().addStateDidChangeListener{_,_ in }
     private var userRepository: UserRepository = UserRepository()
-    var currentUser: User {
-        return _currentUser ?? User(uid: "", email: "", firstName:"",lastName:"", city:"", state:"",country:"", zipCode:"")
+    var currentUser: TouristUser {
+        return _currentUser ?? TouristUser(uid: "", email: "", firstName:"",lastName:"", city:"", state:"",country:"", zipCode:"")
     }
         
     init(){
         handler = Auth.auth().addStateDidChangeListener{ auth,user in
             if let user = user {
-                self._currentUser = User(uid: user.uid, email: user.email!, firstName: self.firstName, lastName: self.lastName, city: self.city, state:self.state, country:self.country, zipCode:self.zipCode)
+                self._currentUser = TouristUser(uid: user.uid, email: user.email!, firstName: self.firstName, lastName: self.lastName, city: self.city, state:self.state, country:self.country, zipCode:self.zipCode)
                     self.isLoggedIn = true
             } else {
                 self._currentUser = nil
@@ -109,5 +109,6 @@ struct PasswordInputView: View {
         }.font(Font.custom("Roboto", size: 20)).foregroundColor(.black).offset(x: 27, y: -0.32)
     }
 }
+
 
           

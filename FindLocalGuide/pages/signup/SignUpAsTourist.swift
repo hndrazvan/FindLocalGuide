@@ -2,8 +2,8 @@ import SwiftUI
 import Combine
 import FirebaseAuth
 
-struct SignUp: View {
-  @StateObject var viewModel = ViewModel()
+struct SignUpAsTourist: View {
+  @StateObject var viewModel = LoginViewModel()
 
     var body: some View {
         NavigationView(){
@@ -20,11 +20,11 @@ struct SignUp: View {
                             .font(Font.custom("Roboto", size: 20).weight(.bold))
                             .foregroundColor(.black)
                             .offset(x: 15, y: -328.50))
-                    Text(" Become a Local Expert:")
+                    Text(" Your next adventures start here:")
                         .font(Font.custom("Roboto", size: 20))
                         .foregroundColor(.black)
                         .offset(x: 15, y: -268.50)
-                    Text("Join as a Guide and Share Your Insights!")
+                    Text("Sign up for Unforgettable Journeys!")
                         .font(Font.custom("Roboto", size: 20))
                         .foregroundColor(.black)
                         .offset(x: 15, y: -238.50)
@@ -158,7 +158,7 @@ struct SignUp: View {
                     Button {
                         
                     } label: {
-                        NavigationLink(destination: Login()){
+                        NavigationLink(destination: LoginPage()){
                             Text("Sign in")
                         }
                     }.offset(x: 125, y: 363)
@@ -183,8 +183,8 @@ struct SignUp: View {
     }
 }
 
-struct SignUp_Previews: PreviewProvider {
+struct SignUpAsTourist_Previews: PreviewProvider {
   static var previews: some View {
-    SignUp()
+    SignUpAsTourist()
   }
 }

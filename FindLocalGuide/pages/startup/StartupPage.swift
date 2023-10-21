@@ -1,9 +1,10 @@
 import SwiftUI
 
 struct StartupPage: View {
-    public let timer = Timer.publish(every: 10, on: .main , in: .common).autoconnect()
+@State public var timer = Timer.publish(every: 10, on: .main , in: .common).autoconnect()
 @State private var selection = 0
 @State public var showLogin = false
+@State public var presentHomepage = true
 
   private let images = ["tajmahal", "machupichu", "greatwall", "colloseum"]
 
@@ -11,12 +12,16 @@ struct StartupPage: View {
           VStack{
               TabView(selection: $selection){
                   ForEach(0..<4){i in Image("\(images[i])")
-                          .resizable().ignoresSafeArea().overlay(ImageOverlay(),alignment: .bottom)
+                          .resizable().ignoresSafeArea().overlay(ImageOverlay(showLogin: self.$showLogin, presentHomepage: self.$presentHomepage),alignment: .bottom)
                   }
               }.tabViewStyle(PageTabViewStyle()).indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
                   .onReceive(timer, perform: {_ in
-                      withAnimation{
-                          selection = selection < 4 ? selection + 1 : 0
+                      if self.showLogin {
+                          timer.upstream.connect().cancel()
+                      } else {
+                          withAnimation{
+                              selection = selection < 4 ? selection + 1 : 0
+                          }
                       }
                       
                   })
@@ -27,7 +32,10 @@ struct StartupPage: View {
 }
 
 struct ImageOverlay: View {
-    @State public var showLogin = false
+    @Binding public var showLogin: Bool
+    @Binding public var presentHomepage: Bool
+    
+
     var body: some View {
         VStack {
             Text("Embark on a journey of discovery with the premier local guide application")
@@ -42,10 +50,11 @@ struct ImageOverlay: View {
         
         Button("Get started") {
             self.showLogin.toggle()
+            self.presentHomepage.toggle()
         }.fullScreenCover(isPresented: $showLogin){
-            Login()
+            LoginPage()
         }.font(Font.custom("Roboto", size: 20).weight(.bold)).contentShape(Rectangle()).frame(width: 325, height: 60)
-.background(Color(red: 0.31, green: 0.76, blue: 0.79)).cornerRadius(10)
+            .background(Color(red: 0.31, green: 0.76, blue: 0.79)).cornerRadius(10)
 
 
     }
