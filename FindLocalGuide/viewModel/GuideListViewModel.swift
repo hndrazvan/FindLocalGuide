@@ -15,7 +15,7 @@ class GuideListViewModel: ObservableObject {
             filterUsers(text: searchText)
         }
     }
-    @Published var filteredUsers = [TouristUser]()
+    @Published var filteredUsers = [User]()
     @Published var selectedUser = ""
     var userRepository = UserRepository()
 
@@ -24,10 +24,10 @@ class GuideListViewModel: ObservableObject {
             filterUsers(text:searchText)
         }
     }
-    var guideList = [TouristUser]()
+    var guideList = [User]()
     func filterUsers(text: String) {
         Task {
-            guideList = await userRepository.getUsers()
+            guideList = await userRepository.getTouristUsers()
             
             if text.isEmpty {
                 filteredUsers = guideList

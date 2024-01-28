@@ -14,8 +14,7 @@ class UserRepository: ObservableObject {
 
     let db = Firestore.firestore()
     
-    func addUser(user: TouristUser) {
-        print("Adding user")
+    func addTouristUser(user: User) {
         var dictionary: [String: Any] = [
             "uid": user.uid,
             "email": user.email,
@@ -27,7 +26,30 @@ class UserRepository: ObservableObject {
             "zipCode": user.zipCode
             ]
         print(dictionary)
-        db.collection("users").document(user.email).setData(dictionary,
+        db.collection("touristUsers").document(user.email).setData(dictionary,
+               merge: true) { error in
+                 guard error == nil else {
+                     print("Error: ", error )
+                    return
+                 }
+            }
+        
+    }
+    
+    func addGuideUser(user: GuideUser) {
+        var dictionary: [String: Any] = [
+            "uid": user.uid,
+            "email": user.email,
+            "firstname": user.firstName,
+            "lastName": user.lastName,
+            "city": user.city,
+            "state": user.state,
+            "country": user.country,
+            "zipCode": user.zipCode,
+            "description": user.description,
+            "availabilityDates": user.availabilityDates
+            ]
+        db.collection("guideUsers").document(user.email).setData(dictionary,
                merge: true) { error in
                  guard error == nil else {
                      print("Error: ", error )
@@ -37,12 +59,12 @@ class UserRepository: ObservableObject {
         
     }
 
-    func getUsers() async -> [TouristUser] {
+    func getTouristUsers() async -> [User] {
 
-      var users = [TouristUser]()
-      var user: TouristUser = TouristUser(uid: "", email: "", firstName:"",lastName:"", city:"", state:"",country:"", zipCode:"")
+      var users = [User]()
+      var user: User = User(uid: "", email: "", firstName:"",lastName:"", city:"", state:"",country:"", zipCode:"")
       do {
-          let snapshot = try await db.collection("users").getDocuments()
+          let snapshot = try await db.collection("touristUsers").getDocuments()
           snapshot.documents.forEach { documentSnapshot in
               let documentData = documentSnapshot.data()
               user.uid = documentData["uid"] as! String
@@ -61,5 +83,35 @@ class UserRepository: ObservableObject {
         
       return users
       }
+    
+    func getGuideUsers() async -> [GuideUser] {
+
+      var users = [GuideUser]()
+        var user: GuideUser = GuideUser(uid: "", email: "", firstName:"",lastName:"", city:"", state:"",country:"", zipCode:"", description: "", availabilityDates: [])
+      do {
+          let snapshot = try await db.collection("guideUsers").getDocuments()
+          snapshot.documents.forEach { documentSnapshot in
+              let documentData = documentSnapshot.data()
+              user.uid = documentData["uid"] as! String
+              user.email = documentData["email"] as! String
+              user.firstName = documentData["firstname"] as! String
+              user.lastName = documentData["lastName"] as! String
+              user.city = documentData["city"] as! String
+              user.state = documentData["state"] as! String
+              user.country = documentData["country"] as! String
+              user.zipCode = documentData["zipCode"] as! String
+              user.description = documentData["description"] as! String
+              user.availabilityDates = documentData["availabilityDates"] as! [DateInterval]
+
+              users.append(user)
+          }
+          } catch {
+              print(error)
+          }
+        
+      return users
+      }
+    
+    
     
 }

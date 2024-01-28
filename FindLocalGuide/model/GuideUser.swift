@@ -7,19 +7,19 @@
 
 import Foundation
 
-struct GuideUser: Codable {
-
-    var uid: String
-    var email: String
-    var firstName: String
-    var lastName: String
-    var city: String
-    var state: String
-    var country: String
-    var zipCode: String
-    var description: String
-    var availabilityDates: [Date]
+class GuideUser: User {
     
-
+    var description: String
+    var availabilityDates: [DateInterval]
+    
+    init(uid: String, email: String, firstName: String, lastName: String, city: String, state: String, country: String, zipCode: String, description: String, availabilityDates: [DateInterval]) {
+        self.description = description
+        self.availabilityDates = availabilityDates
+        super.init(uid: uid, email: email, firstName: firstName, lastName: lastName, city: city, state: state, country: country, zipCode: zipCode)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
+    }
     
 }

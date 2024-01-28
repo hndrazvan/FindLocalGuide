@@ -10,7 +10,11 @@ import Combine
 import FirebaseAuth
 
 struct SignUpAsGuide: View {
-  @StateObject var viewModel = LoginViewModel()
+    @Environment(\.presentationMode) var presentationMode
+
+    @StateObject var viewModel = SIgnUpAsGuideViewModel()
+    @State public var showErrorField = false
+    @State public var showSuccessfulSignupAlert = false
 
     var body: some View {
         NavigationView(){
@@ -48,7 +52,7 @@ struct SignUpAsGuide: View {
                         EmailInputView(placeHolder: "Enter your firstname", txt: $viewModel.firstName)
                             .onChange(of: viewModel.firstName, perform: onInputChanged)
                     }.frame(width: 350, height: 45)
-                        .offset(x: 9.50, y: -150)
+                        .offset(x: 9.50, y: -180)
                     ZStack() {
                         Rectangle()
                             .foregroundColor(.clear)
@@ -59,7 +63,7 @@ struct SignUpAsGuide: View {
                         EmailInputView(placeHolder: "Enter your lastname", txt: $viewModel.lastName)
                             .onChange(of: viewModel.lastName, perform: onInputChanged)
                     }.frame(width: 350, height: 45)
-                        .offset(x: 9.50, y: -95)
+                        .offset(x: 9.50, y: -125)
                     ZStack() {
                         Rectangle()
                             .foregroundColor(.clear)
@@ -70,7 +74,7 @@ struct SignUpAsGuide: View {
                         EmailInputView(placeHolder: "Enter your email", txt: $viewModel.email)
                             .onChange(of: viewModel.email, perform: onInputChanged)
                     }.frame(width: 350, height: 45)
-                        .offset(x: 9.50, y: -40)
+                        .offset(x: 9.50, y: -70)
                     ZStack() {
                         Rectangle()
                             .foregroundColor(.clear)
@@ -81,7 +85,7 @@ struct SignUpAsGuide: View {
                         PasswordInputView(placeHolder: "Enter your password", txt: $viewModel.password)
                             .onChange(of: viewModel.password, perform: onInputChanged)
                     }.frame(width: 350, height: 45)
-                        .offset(x: 9.50, y: 15)
+                        .offset(x: 9.50, y: -15)
                     ZStack() {
                         Rectangle()
                             .foregroundColor(.clear)
@@ -89,10 +93,15 @@ struct SignUpAsGuide: View {
                             .background(.white)
                             .cornerRadius(100)
                             .offset(x: 0, y: 0)
-                        PasswordInputView(placeHolder: "Confirm password", txt: $viewModel.password)
-                            .onChange(of: viewModel.password, perform: onConfirmPassword)
+                        PasswordInputView(placeHolder: "Confirm password", txt: $viewModel.confirmPassword)
+                            .onSubmit{
+                                onConfirmPassword()
+                            }
+                        if self.showErrorField {
+                            NormalTextView()
+                        }
                     }.frame(width: 350, height: 45)
-                        .offset(x: 9.50, y: 70)
+                        .offset(x: 9.50, y: 40)
                     ZStack() {
                         Rectangle()
                             .foregroundColor(.clear)
@@ -100,10 +109,10 @@ struct SignUpAsGuide: View {
                             .background(.white)
                             .cornerRadius(100)
                             .offset(x: 0, y: 0)
-                        EmailInputView(placeHolder: "City", txt: $viewModel.city)
+                        NormalTextInputView(placeHolder: "City", txt: $viewModel.city)
                             .onChange(of: viewModel.city, perform: onInputChanged)
                     }.frame(width: 170, height: 45)
-                        .offset(x: -80, y: 125)
+                        .offset(x: -80, y: 95)
                     ZStack() {
                         Rectangle()
                             .foregroundColor(.clear)
@@ -111,10 +120,10 @@ struct SignUpAsGuide: View {
                             .background(.white)
                             .cornerRadius(100)
                             .offset(x: 0, y: 0)
-                        EmailInputView(placeHolder: "State", txt: $viewModel.state)
+                        NormalTextInputView(placeHolder: "State", txt: $viewModel.state)
                             .onChange(of: viewModel.state, perform: onInputChanged)
                     }.frame(width: 170, height: 45)
-                        .offset(x: 100, y: 125)
+                        .offset(x: 100, y: 95)
                     ZStack() {
                         Rectangle()
                             .foregroundColor(.clear)
@@ -122,10 +131,10 @@ struct SignUpAsGuide: View {
                             .background(.white)
                             .cornerRadius(100)
                             .offset(x: 0, y: 0)
-                        EmailInputView(placeHolder: "Country", txt: $viewModel.country)
+                        NormalTextInputView(placeHolder: "Country", txt: $viewModel.country)
                             .onChange(of: viewModel.country, perform: onInputChanged)
                     }.frame(width: 170, height: 45)
-                        .offset(x: -80, y: 180)
+                        .offset(x: -80, y: 150)
                     ZStack() {
                         Rectangle()
                             .foregroundColor(.clear)
@@ -133,10 +142,22 @@ struct SignUpAsGuide: View {
                             .background(.white)
                             .cornerRadius(100)
                             .offset(x: 0, y: 0)
-                        EmailInputView(placeHolder: "Zip code", txt: $viewModel.zipCode)
+                        NormalTextInputView(placeHolder: "Zip code", txt: $viewModel.zipCode)
                             .onChange(of: viewModel.zipCode, perform: onInputChanged)
                     }.frame(width: 170, height: 45)
-                        .offset(x: 100, y: 180)
+                        .offset(x: 100, y: 150)
+                    ZStack() {
+                        Rectangle()
+                            .foregroundColor(.clear)
+                            .frame(width: 350, height: 75)
+                            .background(.white)
+                            .cornerRadius(20)
+                            .offset(x: 0, y: 0)
+                        NormalTextInputView(placeHolder: "Description", txt: $viewModel.description)
+                            .onChange(of: viewModel.description, perform: onInputChanged)
+                    }.frame(width: 350, height: 75)
+                        .offset(x: 9.50, y: 220)
+                    
                     
                     
                 }
@@ -152,12 +173,22 @@ struct SignUpAsGuide: View {
                             Task {
                                 await viewModel.createAccount()
                             }
-                        }).font(Font.custom("Roboto", size: 20).weight(.bold))
+                            self.showSuccessfulSignupAlert.toggle()
+                        }).alert(isPresented: $showSuccessfulSignupAlert, content: {
+                            Alert(
+                                title: Text("You signed up successfully"),
+                                primaryButton:.default(Text("Back to login"), action: {
+                                    presentationMode.wrappedValue.dismiss()
+                                }),
+                                secondaryButton: .cancel()
+                            )
+                        })
+                         .font(Font.custom("Roboto", size: 20).weight(.bold))
                             .foregroundColor(Color(red: 0.04, green: 0.08, blue: 0.08))
                             .offset(x: -0.39, y: 0)
                     }
                     .frame(width: 253, height: 54)
-                    .offset(x: 1, y: 263)
+                    .offset(x: 1, y: 303)
                     
                     Text("Already have an account?")
                         .font(Font.custom("Roboto", size: 20))
@@ -174,9 +205,12 @@ struct SignUpAsGuide: View {
                 .background(Color(red: 0.93, green: 0.93, blue: 0.93));
         }.navigationBarBackButtonHidden(true)
   }
-    private func onConfirmPassword(changed: String) {
-        if( !changed.elementsEqual(viewModel.password)){
-            print("Passwords do not matchß")
+    private func onConfirmPassword() {
+        if(!viewModel.confirmPassword.elementsEqual(viewModel.password)){
+            self.showErrorField = true
+        } else {
+            self.showErrorField = false
+
         }
     }
     private func onInputChanged(changed: String) {

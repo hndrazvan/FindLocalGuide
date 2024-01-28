@@ -3,7 +3,11 @@ import Combine
 import FirebaseAuth
 
 struct SignUpAsTourist: View {
-  @StateObject var viewModel = LoginViewModel()
+  @Environment(\.presentationMode) var presentationMode
+
+  @StateObject var viewModel = SignUpAsTouristViewModel()
+  @State public var showErrorField = false
+  @State public var showSuccessfulSignupAlert = false
 
     var body: some View {
         NavigationView(){
@@ -75,6 +79,7 @@ struct SignUpAsTourist: View {
                             .onChange(of: viewModel.password, perform: onInputChanged)
                     }.frame(width: 350, height: 45)
                         .offset(x: 9.50, y: 15)
+                   
                     ZStack() {
                         Rectangle()
                             .foregroundColor(.clear)
@@ -82,10 +87,17 @@ struct SignUpAsTourist: View {
                             .background(.white)
                             .cornerRadius(100)
                             .offset(x: 0, y: 0)
-                        PasswordInputView(placeHolder: "Confirm password", txt: $viewModel.password)
-                            .onChange(of: viewModel.password, perform: onConfirmPassword)
+                        PasswordInputView(placeHolder: "Confirm password", txt: $viewModel.confirmPassword)
+                            .onSubmit{
+                                onConfirmPassword()
+                            }
+                        if self.showErrorField {
+                            NormalTextView()
+                        }
+
                     }.frame(width: 350, height: 45)
                         .offset(x: 9.50, y: 70)
+                    
                     ZStack() {
                         Rectangle()
                             .foregroundColor(.clear)
@@ -93,7 +105,7 @@ struct SignUpAsTourist: View {
                             .background(.white)
                             .cornerRadius(100)
                             .offset(x: 0, y: 0)
-                        EmailInputView(placeHolder: "City", txt: $viewModel.city)
+                        NormalTextInputView(placeHolder: "City", txt: $viewModel.city)
                             .onChange(of: viewModel.city, perform: onInputChanged)
                     }.frame(width: 170, height: 45)
                         .offset(x: -80, y: 125)
@@ -104,7 +116,7 @@ struct SignUpAsTourist: View {
                             .background(.white)
                             .cornerRadius(100)
                             .offset(x: 0, y: 0)
-                        EmailInputView(placeHolder: "State", txt: $viewModel.state)
+                        NormalTextInputView(placeHolder: "State", txt: $viewModel.state)
                             .onChange(of: viewModel.state, perform: onInputChanged)
                     }.frame(width: 170, height: 45)
                         .offset(x: 100, y: 125)
@@ -115,7 +127,7 @@ struct SignUpAsTourist: View {
                             .background(.white)
                             .cornerRadius(100)
                             .offset(x: 0, y: 0)
-                        EmailInputView(placeHolder: "Country", txt: $viewModel.country)
+                        NormalTextInputView(placeHolder: "Country", txt: $viewModel.country)
                             .onChange(of: viewModel.country, perform: onInputChanged)
                     }.frame(width: 170, height: 45)
                         .offset(x: -80, y: 180)
@@ -126,7 +138,7 @@ struct SignUpAsTourist: View {
                             .background(.white)
                             .cornerRadius(100)
                             .offset(x: 0, y: 0)
-                        EmailInputView(placeHolder: "Zip code", txt: $viewModel.zipCode)
+                        NormalTextInputView(placeHolder: "Zip code", txt: $viewModel.zipCode)
                             .onChange(of: viewModel.zipCode, perform: onInputChanged)
                     }.frame(width: 170, height: 45)
                         .offset(x: 100, y: 180)
@@ -145,6 +157,15 @@ struct SignUpAsTourist: View {
                             Task {
                                 await viewModel.createAccount()
                             }
+                            self.showSuccessfulSignupAlert.toggle()
+                        }).alert(isPresented: $showSuccessfulSignupAlert, content: {
+                            Alert(
+                                title: Text("You signed up successfully"),
+                                primaryButton:.default(Text("Back to login"), action: {
+                                    presentationMode.wrappedValue.dismiss()
+                                }),
+                                secondaryButton: .cancel()
+                            )
                         }).font(Font.custom("Roboto", size: 20).weight(.bold))
                             .foregroundColor(Color(red: 0.04, green: 0.08, blue: 0.08))
                             .offset(x: -0.39, y: 0)
@@ -167,9 +188,12 @@ struct SignUpAsTourist: View {
                 .background(Color(red: 0.93, green: 0.93, blue: 0.93));
         }.navigationBarBackButtonHidden(true)
   }
-    private func onConfirmPassword(changed: String) {
-        if( !changed.elementsEqual(viewModel.password)){
-            print("Passwords do not matchß")
+    private func onConfirmPassword() {
+        if(!viewModel.confirmPassword.elementsEqual(viewModel.password)){
+            self.showErrorField = true
+        } else {
+            self.showErrorField = false
+
         }
     }
     private func onInputChanged(changed: String) {
@@ -181,6 +205,7 @@ struct SignUpAsTourist: View {
         //print(Auth.auth().currentUser)
             
     }
+    
 }
 
 struct SignUpAsTourist_Previews: PreviewProvider {

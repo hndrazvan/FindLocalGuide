@@ -7,11 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B6231BB2ADC0432004AF30D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6B6231BA2ADC0432004AF30D /* FirebaseFirestore */; };
+		6B501D922AE538C200124FBA /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B501D912AE538C200124FBA /* SideMenu.swift */; };
+		6B501D942AE538E400124FBA /* SideMenuRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B501D932AE538E400124FBA /* SideMenuRowType.swift */; };
+		6B501D962AE5391E00124FBA /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B501D952AE5391E00124FBA /* SideMenuView.swift */; };
+		6B501D982AE553FC00124FBA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B501D972AE553FC00124FBA /* HomeView.swift */; };
+		6B501D9A2AE5558D00124FBA /* MainSideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B501D992AE5558D00124FBA /* MainSideMenuView.swift */; };
+		6B501D9C2AE556C800124FBA /* TouristHomepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B501D9B2AE556C800124FBA /* TouristHomepage.swift */; };
 		6B6231C02ADD566C004AF30D /* DateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6231BF2ADD566C004AF30D /* DateViewModel.swift */; };
 		6B6231C22ADD567E004AF30D /* GuideListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6231C12ADD567E004AF30D /* GuideListViewModel.swift */; };
 		6B6231C92ADD5809004AF30D /* GuideUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6231C82ADD5809004AF30D /* GuideUser.swift */; };
 		6B6231CB2ADD58DD004AF30D /* SignUpAsGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6231CA2ADD58DD004AF30D /* SignUpAsGuide.swift */; };
+		6B6231CD2AE5064B004AF30D /* SIgnUpAsGuideViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6231CC2AE5064B004AF30D /* SIgnUpAsGuideViewModel.swift */; };
+		6B6231CF2AE507D6004AF30D /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6231CE2AE507D6004AF30D /* LoginViewModel.swift */; };
+		6B6231D32AE50A1F004AF30D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6231D22AE50A1F004AF30D /* User.swift */; };
+		6B6231D52AE50CBB004AF30D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6B6231D42AE50CBB004AF30D /* FirebaseFirestore */; };
 		6B83086C2AACAA5D001899ED /* StartupPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B83086B2AACAA5D001899ED /* StartupPage.swift */; };
 		6B83086E2ABEF47C001899ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6B83086D2ABEF47C001899ED /* GoogleService-Info.plist */; };
 		6B8308712ABEF585001899ED /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6B8308702ABEF585001899ED /* FirebaseAnalytics */; };
@@ -41,8 +50,25 @@
 		6B8308A32ABEF585001899ED /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 6B8308A22ABEF585001899ED /* FirebaseStorage */; };
 		6B8308A52ABEF585001899ED /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 6B8308A42ABEF585001899ED /* FirebaseStorageCombine-Community */; };
 		6B8308A72ABF16D6001899ED /* SignUpAsTourist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8308A62ABF16D6001899ED /* SignUpAsTourist.swift */; };
-		6B8308A92ABF2BCB001899ED /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8308A82ABF2BCB001899ED /* LoginViewModel.swift */; };
-		6B8D0A292AC3268E002741C3 /* TouristUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D0A282AC3268E002741C3 /* TouristUser.swift */; };
+		6B8308A92ABF2BCB001899ED /* SignUpAsTouristViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8308A82ABF2BCB001899ED /* SignUpAsTouristViewModel.swift */; };
+		6B88D81F2B657D1F0041E4B1 /* Stripe in Frameworks */ = {isa = PBXBuildFile; productRef = 6B88D81E2B657D1F0041E4B1 /* Stripe */; };
+		6B88D8212B657D1F0041E4B1 /* StripeApplePay in Frameworks */ = {isa = PBXBuildFile; productRef = 6B88D8202B657D1F0041E4B1 /* StripeApplePay */; };
+		6B88D8232B657D1F0041E4B1 /* StripeCardScan in Frameworks */ = {isa = PBXBuildFile; productRef = 6B88D8222B657D1F0041E4B1 /* StripeCardScan */; };
+		6B88D8252B657D1F0041E4B1 /* StripeFinancialConnections in Frameworks */ = {isa = PBXBuildFile; productRef = 6B88D8242B657D1F0041E4B1 /* StripeFinancialConnections */; };
+		6B88D8272B657D1F0041E4B1 /* StripeIdentity in Frameworks */ = {isa = PBXBuildFile; productRef = 6B88D8262B657D1F0041E4B1 /* StripeIdentity */; };
+		6B88D8292B657D1F0041E4B1 /* StripePaymentSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 6B88D8282B657D1F0041E4B1 /* StripePaymentSheet */; };
+		6B88D82B2B657D1F0041E4B1 /* StripePayments in Frameworks */ = {isa = PBXBuildFile; productRef = 6B88D82A2B657D1F0041E4B1 /* StripePayments */; };
+		6B88D82D2B657D1F0041E4B1 /* StripePaymentsUI in Frameworks */ = {isa = PBXBuildFile; productRef = 6B88D82C2B657D1F0041E4B1 /* StripePaymentsUI */; };
+		6B88D8392B65848A0041E4B1 /* SubscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B88D8382B65848A0041E4B1 /* SubscriptionService.swift */; };
+		6B88D83C2B6584DA0041E4B1 /* SubscriptionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B88D83B2B6584DA0041E4B1 /* SubscriptionResponse.swift */; };
+		6B88D83E2B6585090041E4B1 /* SubscriptionResponseCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B88D83D2B6585090041E4B1 /* SubscriptionResponseCallback.swift */; };
+		6B88D8412B65852D0041E4B1 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B88D8402B65852D0041E4B1 /* AppConstants.swift */; };
+		6B88D8432B65856B0041E4B1 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B88D8422B65856B0041E4B1 /* Utils.swift */; };
+		6B88D8462B6585900041E4B1 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B88D8452B6585900041E4B1 /* CheckoutView.swift */; };
+		6B88D8482B6585AE0041E4B1 /* SubscriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B88D8472B6585AE0041E4B1 /* SubscriptionViewModel.swift */; };
+		6B88D84D2B6587090041E4B1 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6B88D84C2B6587090041E4B1 /* Alamofire */; };
+		6B88D84F2B6587880041E4B1 /* PaymentContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B88D84E2B6587880041E4B1 /* PaymentContentView.swift */; };
+		6B88D8512B6671D00041E4B1 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B88D8502B6671D00041E4B1 /* CheckoutViewController.swift */; };
 		6B8D0A2B2AC326B0002741C3 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D0A2A2AC326B0002741C3 /* UserRepository.swift */; };
 		6B8D0A2D2AC3384C002741C3 /* Homepage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D0A2C2AC3384C002741C3 /* Homepage.swift */; };
 		6B8D0A2F2ADAD587002741C3 /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8D0A2E2ADAD587002741C3 /* LocationSearchViewModel.swift */; };
@@ -84,15 +110,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B501D912AE538C200124FBA /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
+		6B501D932AE538E400124FBA /* SideMenuRowType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuRowType.swift; sourceTree = "<group>"; };
+		6B501D952AE5391E00124FBA /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		6B501D972AE553FC00124FBA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		6B501D992AE5558D00124FBA /* MainSideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSideMenuView.swift; sourceTree = "<group>"; };
+		6B501D9B2AE556C800124FBA /* TouristHomepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristHomepage.swift; sourceTree = "<group>"; };
 		6B6231BF2ADD566C004AF30D /* DateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewModel.swift; sourceTree = "<group>"; };
 		6B6231C12ADD567E004AF30D /* GuideListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideListViewModel.swift; sourceTree = "<group>"; };
 		6B6231C82ADD5809004AF30D /* GuideUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideUser.swift; sourceTree = "<group>"; };
 		6B6231CA2ADD58DD004AF30D /* SignUpAsGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAsGuide.swift; sourceTree = "<group>"; };
+		6B6231CC2AE5064B004AF30D /* SIgnUpAsGuideViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIgnUpAsGuideViewModel.swift; sourceTree = "<group>"; };
+		6B6231CE2AE507D6004AF30D /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		6B6231D22AE50A1F004AF30D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6B83086B2AACAA5D001899ED /* StartupPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupPage.swift; sourceTree = "<group>"; };
 		6B83086D2ABEF47C001899ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6B8308A62ABF16D6001899ED /* SignUpAsTourist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAsTourist.swift; sourceTree = "<group>"; };
-		6B8308A82ABF2BCB001899ED /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		6B8D0A282AC3268E002741C3 /* TouristUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristUser.swift; sourceTree = "<group>"; };
+		6B8308A82ABF2BCB001899ED /* SignUpAsTouristViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpAsTouristViewModel.swift; sourceTree = "<group>"; };
+		6B88D81C2B6576C70041E4B1 /* FindLocalGuide.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FindLocalGuide.entitlements; sourceTree = "<group>"; };
+		6B88D8382B65848A0041E4B1 /* SubscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionService.swift; sourceTree = "<group>"; };
+		6B88D83B2B6584DA0041E4B1 /* SubscriptionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionResponse.swift; sourceTree = "<group>"; };
+		6B88D83D2B6585090041E4B1 /* SubscriptionResponseCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionResponseCallback.swift; sourceTree = "<group>"; };
+		6B88D8402B65852D0041E4B1 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		6B88D8422B65856B0041E4B1 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		6B88D8452B6585900041E4B1 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		6B88D8472B6585AE0041E4B1 /* SubscriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewModel.swift; sourceTree = "<group>"; };
+		6B88D84E2B6587880041E4B1 /* PaymentContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentContentView.swift; sourceTree = "<group>"; };
+		6B88D8502B6671D00041E4B1 /* CheckoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		6B8D0A2A2AC326B0002741C3 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		6B8D0A2C2AC3384C002741C3 /* Homepage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homepage.swift; sourceTree = "<group>"; };
 		6B8D0A2E2ADAD587002741C3 /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = "<group>"; };
@@ -124,21 +168,27 @@
 				6B8308752ABEF585001899ED /* FirebaseAnalyticsSwift in Frameworks */,
 				6B8D0A382ADADC6B002741C3 /* InstantSearch in Frameworks */,
 				6B8308712ABEF585001899ED /* FirebaseAnalytics in Frameworks */,
-				6B6231BB2ADC0432004AF30D /* FirebaseFirestore in Frameworks */,
+				6B88D8212B657D1F0041E4B1 /* StripeApplePay in Frameworks */,
+				6B6231D52AE50CBB004AF30D /* FirebaseFirestore in Frameworks */,
 				6B8308732ABEF585001899ED /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				6B88D8292B657D1F0041E4B1 /* StripePaymentSheet in Frameworks */,
 				6B8308992ABEF585001899ED /* FirebaseMLModelDownloader in Frameworks */,
 				6B83088D2ABEF585001899ED /* FirebaseFirestoreSwift in Frameworks */,
+				6B88D84D2B6587090041E4B1 /* Alamofire in Frameworks */,
 				6B8308792ABEF585001899ED /* FirebaseAppCheck in Frameworks */,
 				6B8D0A3A2ADADC6B002741C3 /* InstantSearchCore in Frameworks */,
 				6B8308772ABEF585001899ED /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
+				6B88D8252B657D1F0041E4B1 /* StripeFinancialConnections in Frameworks */,
 				6B83087D2ABEF585001899ED /* FirebaseAuth in Frameworks */,
 				6B8308812ABEF585001899ED /* FirebaseCrashlytics in Frameworks */,
 				6B8308A12ABEF585001899ED /* FirebaseRemoteConfigSwift in Frameworks */,
 				6B8308932ABEF585001899ED /* FirebaseInAppMessaging-Beta in Frameworks */,
+				6B88D8272B657D1F0041E4B1 /* StripeIdentity in Frameworks */,
 				6B8308852ABEF585001899ED /* FirebaseDatabaseSwift in Frameworks */,
 				6B8D0A3C2ADADC6B002741C3 /* InstantSearchInsights in Frameworks */,
 				6B83088F2ABEF585001899ED /* FirebaseFunctions in Frameworks */,
 				6B8308A52ABEF585001899ED /* FirebaseStorageCombine-Community in Frameworks */,
+				6B88D82B2B657D1F0041E4B1 /* StripePayments in Frameworks */,
 				6B8D0A452ADB0592002741C3 /* RangeCalendar in Frameworks */,
 				6B83089F2ABEF585001899ED /* FirebaseRemoteConfig in Frameworks */,
 				6B83087B2ABEF585001899ED /* FirebaseAppDistribution-Beta in Frameworks */,
@@ -146,10 +196,13 @@
 				6B83089D2ABEF585001899ED /* FirebasePerformance in Frameworks */,
 				6B8308952ABEF585001899ED /* FirebaseInAppMessagingSwift-Beta in Frameworks */,
 				6B8308A32ABEF585001899ED /* FirebaseStorage in Frameworks */,
+				6B88D8232B657D1F0041E4B1 /* StripeCardScan in Frameworks */,
 				6B8308872ABEF585001899ED /* FirebaseDynamicLinks in Frameworks */,
 				6B8D0A3E2ADADC6B002741C3 /* InstantSearchSwiftUI in Frameworks */,
+				6B88D81F2B657D1F0041E4B1 /* Stripe in Frameworks */,
 				6B83088B2ABEF585001899ED /* FirebaseFirestoreCombine-Community in Frameworks */,
 				6B83089B2ABEF585001899ED /* FirebaseMessaging in Frameworks */,
+				6B88D82D2B657D1F0041E4B1 /* StripePaymentsUI in Frameworks */,
 				6B8308972ABEF585001899ED /* FirebaseInstallations in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,9 +245,11 @@
 			isa = PBXGroup;
 			children = (
 				6B8D0A2E2ADAD587002741C3 /* LocationSearchViewModel.swift */,
-				6B8308A82ABF2BCB001899ED /* LoginViewModel.swift */,
+				6B8308A82ABF2BCB001899ED /* SignUpAsTouristViewModel.swift */,
 				6B6231BF2ADD566C004AF30D /* DateViewModel.swift */,
 				6B6231C12ADD567E004AF30D /* GuideListViewModel.swift */,
+				6B6231CC2AE5064B004AF30D /* SIgnUpAsGuideViewModel.swift */,
+				6B6231CE2AE507D6004AF30D /* LoginViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -218,6 +273,7 @@
 		6B6231C52ADD57BE004AF30D /* pages */ = {
 			isa = PBXGroup;
 			children = (
+				6B88D82E2B657D610041E4B1 /* payment */,
 				6B6231C72ADD57D9004AF30D /* home */,
 				6B6231C62ADD57CD004AF30D /* startup */,
 				6B6231BD2ADD562F004AF30D /* signup */,
@@ -241,6 +297,11 @@
 				6B8D0A3F2ADAE039002741C3 /* LocationSearchPage.swift */,
 				6B8D0A412ADB04C2002741C3 /* SelectDatePage.swift */,
 				6BF4ED242ADBCCCB00FA513B /* GuideListPage.swift */,
+				6B501D912AE538C200124FBA /* SideMenu.swift */,
+				6B501D952AE5391E00124FBA /* SideMenuView.swift */,
+				6B501D972AE553FC00124FBA /* HomeView.swift */,
+				6B501D992AE5558D00124FBA /* MainSideMenuView.swift */,
+				6B501D9B2AE556C800124FBA /* TouristHomepage.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -252,11 +313,60 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6B88D82E2B657D610041E4B1 /* payment */ = {
+			isa = PBXGroup;
+			children = (
+				6B88D8442B6585840041E4B1 /* views */,
+				6B88D83F2B6585210041E4B1 /* utils */,
+				6B88D83A2B6584CA0041E4B1 /* models */,
+				6B88D8372B6584740041E4B1 /* api */,
+				6B88D84E2B6587880041E4B1 /* PaymentContentView.swift */,
+			);
+			path = payment;
+			sourceTree = "<group>";
+		};
+		6B88D8372B6584740041E4B1 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				6B88D8382B65848A0041E4B1 /* SubscriptionService.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		6B88D83A2B6584CA0041E4B1 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				6B88D83B2B6584DA0041E4B1 /* SubscriptionResponse.swift */,
+				6B88D83D2B6585090041E4B1 /* SubscriptionResponseCallback.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		6B88D83F2B6585210041E4B1 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				6B88D8402B65852D0041E4B1 /* AppConstants.swift */,
+				6B88D8422B65856B0041E4B1 /* Utils.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		6B88D8442B6585840041E4B1 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				6B88D8452B6585900041E4B1 /* CheckoutView.swift */,
+				6B88D8472B6585AE0041E4B1 /* SubscriptionViewModel.swift */,
+				6B88D8502B6671D00041E4B1 /* CheckoutViewController.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		6B8D0A262AC3266E002741C3 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				6B8D0A282AC3268E002741C3 /* TouristUser.swift */,
 				6B6231C82ADD5809004AF30D /* GuideUser.swift */,
+				6B6231D22AE50A1F004AF30D /* User.swift */,
+				6B501D932AE538E400124FBA /* SideMenuRowType.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -293,6 +403,7 @@
 		6BE725792AA8F0370061887B /* FindLocalGuide */ = {
 			isa = PBXGroup;
 			children = (
+				6B88D81C2B6576C70041E4B1 /* FindLocalGuide.entitlements */,
 				6B6231C52ADD57BE004AF30D /* pages */,
 				6B6231C42ADD5759004AF30D /* service */,
 				6B6231C32ADD5751004AF30D /* data */,
@@ -381,7 +492,16 @@
 				6B8D0A3B2ADADC6B002741C3 /* InstantSearchInsights */,
 				6B8D0A3D2ADADC6B002741C3 /* InstantSearchSwiftUI */,
 				6B8D0A442ADB0592002741C3 /* RangeCalendar */,
-				6B6231BA2ADC0432004AF30D /* FirebaseFirestore */,
+				6B6231D42AE50CBB004AF30D /* FirebaseFirestore */,
+				6B88D81E2B657D1F0041E4B1 /* Stripe */,
+				6B88D8202B657D1F0041E4B1 /* StripeApplePay */,
+				6B88D8222B657D1F0041E4B1 /* StripeCardScan */,
+				6B88D8242B657D1F0041E4B1 /* StripeFinancialConnections */,
+				6B88D8262B657D1F0041E4B1 /* StripeIdentity */,
+				6B88D8282B657D1F0041E4B1 /* StripePaymentSheet */,
+				6B88D82A2B657D1F0041E4B1 /* StripePayments */,
+				6B88D82C2B657D1F0041E4B1 /* StripePaymentsUI */,
+				6B88D84C2B6587090041E4B1 /* Alamofire */,
 			);
 			productName = FindLocalGuide;
 			productReference = 6BE725772AA8F0370061887B /* FindLocalGuide.app */;
@@ -459,6 +579,8 @@
 				6B83086F2ABEF585001899ED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				6B8D0A362ADADC6B002741C3 /* XCRemoteSwiftPackageReference "instantsearch-ios" */,
 				6B8D0A432ADB0592002741C3 /* XCRemoteSwiftPackageReference "RangeCalendarSwiftUI" */,
+				6B88D81D2B657D1F0041E4B1 /* XCRemoteSwiftPackageReference "stripe-ios" */,
+				6B88D84B2B6587090041E4B1 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 6BE725782AA8F0370061887B /* Products */;
 			projectDirPath = "";
@@ -504,24 +626,41 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B83086C2AACAA5D001899ED /* StartupPage.swift in Sources */,
-				6B8308A92ABF2BCB001899ED /* LoginViewModel.swift in Sources */,
+				6B8308A92ABF2BCB001899ED /* SignUpAsTouristViewModel.swift in Sources */,
 				6B8D0A332ADAD916002741C3 /* LocalSearchViewData.swift in Sources */,
+				6B501D9A2AE5558D00124FBA /* MainSideMenuView.swift in Sources */,
+				6B501D982AE553FC00124FBA /* HomeView.swift in Sources */,
 				6BE725A52AA8F81A0061887B /* LoginPage.swift in Sources */,
+				6B88D8392B65848A0041E4B1 /* SubscriptionService.swift in Sources */,
+				6B88D84F2B6587880041E4B1 /* PaymentContentView.swift in Sources */,
+				6B88D8482B6585AE0041E4B1 /* SubscriptionViewModel.swift in Sources */,
 				6B8D0A2D2AC3384C002741C3 /* Homepage.swift in Sources */,
 				6B6231C22ADD567E004AF30D /* GuideListViewModel.swift in Sources */,
 				6BF4ED252ADBCCCB00FA513B /* GuideListPage.swift in Sources */,
+				6B88D83E2B6585090041E4B1 /* SubscriptionResponseCallback.swift in Sources */,
 				6B8D0A422ADB04C2002741C3 /* SelectDatePage.swift in Sources */,
 				6BE7257D2AA8F0370061887B /* ContentView.swift in Sources */,
+				6B88D83C2B6584DA0041E4B1 /* SubscriptionResponse.swift in Sources */,
+				6B88D8512B6671D00041E4B1 /* CheckoutViewController.swift in Sources */,
 				6B6231C92ADD5809004AF30D /* GuideUser.swift in Sources */,
 				6B8D0A2F2ADAD587002741C3 /* LocationSearchViewModel.swift in Sources */,
+				6B501D922AE538C200124FBA /* SideMenu.swift in Sources */,
+				6B6231CD2AE5064B004AF30D /* SIgnUpAsGuideViewModel.swift in Sources */,
+				6B501D942AE538E400124FBA /* SideMenuRowType.swift in Sources */,
 				6BE7257B2AA8F0370061887B /* FindLocalGuideApp.swift in Sources */,
 				6B8D0A402ADAE039002741C3 /* LocationSearchPage.swift in Sources */,
 				6B8308A72ABF16D6001899ED /* SignUpAsTourist.swift in Sources */,
 				6B6231CB2ADD58DD004AF30D /* SignUpAsGuide.swift in Sources */,
+				6B88D8462B6585900041E4B1 /* CheckoutView.swift in Sources */,
+				6B88D8432B65856B0041E4B1 /* Utils.swift in Sources */,
+				6B88D8412B65852D0041E4B1 /* AppConstants.swift in Sources */,
+				6B501D962AE5391E00124FBA /* SideMenuView.swift in Sources */,
 				6B8D0A312ADAD8F8002741C3 /* LocalSearchService.swift in Sources */,
 				6B8D0A2B2AC326B0002741C3 /* UserRepository.swift in Sources */,
 				6B6231C02ADD566C004AF30D /* DateViewModel.swift in Sources */,
-				6B8D0A292AC3268E002741C3 /* TouristUser.swift in Sources */,
+				6B501D9C2AE556C800124FBA /* TouristHomepage.swift in Sources */,
+				6B6231CF2AE507D6004AF30D /* LoginViewModel.swift in Sources */,
+				6B6231D32AE50A1F004AF30D /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -677,6 +816,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FindLocalGuide/FindLocalGuide.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -707,6 +847,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FindLocalGuide/FindLocalGuide.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FindLocalGuide/Preview Content\"";
@@ -857,6 +998,22 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		6B88D81D2B657D1F0041E4B1 /* XCRemoteSwiftPackageReference "stripe-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stripe/stripe-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 23.0.0;
+			};
+		};
+		6B88D84B2B6587090041E4B1 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		6B8D0A362ADADC6B002741C3 /* XCRemoteSwiftPackageReference "instantsearch-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/algolia/instantsearch-ios";
@@ -876,7 +1033,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6B6231BA2ADC0432004AF30D /* FirebaseFirestore */ = {
+		6B6231D42AE50CBB004AF30D /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6B83086F2ABEF585001899ED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
@@ -1010,6 +1167,51 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6B83086F2ABEF585001899ED /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		6B88D81E2B657D1F0041E4B1 /* Stripe */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B88D81D2B657D1F0041E4B1 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = Stripe;
+		};
+		6B88D8202B657D1F0041E4B1 /* StripeApplePay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B88D81D2B657D1F0041E4B1 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = StripeApplePay;
+		};
+		6B88D8222B657D1F0041E4B1 /* StripeCardScan */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B88D81D2B657D1F0041E4B1 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = StripeCardScan;
+		};
+		6B88D8242B657D1F0041E4B1 /* StripeFinancialConnections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B88D81D2B657D1F0041E4B1 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = StripeFinancialConnections;
+		};
+		6B88D8262B657D1F0041E4B1 /* StripeIdentity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B88D81D2B657D1F0041E4B1 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = StripeIdentity;
+		};
+		6B88D8282B657D1F0041E4B1 /* StripePaymentSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B88D81D2B657D1F0041E4B1 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = StripePaymentSheet;
+		};
+		6B88D82A2B657D1F0041E4B1 /* StripePayments */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B88D81D2B657D1F0041E4B1 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = StripePayments;
+		};
+		6B88D82C2B657D1F0041E4B1 /* StripePaymentsUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B88D81D2B657D1F0041E4B1 /* XCRemoteSwiftPackageReference "stripe-ios" */;
+			productName = StripePaymentsUI;
+		};
+		6B88D84C2B6587090041E4B1 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B88D84B2B6587090041E4B1 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		6B8D0A372ADADC6B002741C3 /* InstantSearch */ = {
 			isa = XCSwiftPackageProductDependency;
